@@ -1,0 +1,31 @@
+{
+  "name": "vue-ssr",
+  "version": "1.0.0",
+  "description": "zhihu-daily with vue-server-renderer",
+  "keywords": [
+    "vue",
+    "ssr"
+  ],
+  "scripts": {
+    "start": "supervisor server",
+    "webpack": "webpack --config config/webpack.server.js && webpack --config config/webpack.client.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.17.1",
+    "koa": "^2.4.1",
+    "koa-router": "^7.4.0",
+    "vue": "^2.5.13",
+    "vue-router": "^3.0.1",
+    "vue-server-renderer": "^2.5.13"
+  },
+  "devDependencies": {
+    "css-loader": "^0.28.9",
+    "style-loader": "^0.20.1",
+    "vue-loader": "^14.1.1",
+    "vue-template-compiler": "^2.5.13",
+    "webpack": "^3.10.0",
+    "webpack-merge": "^4.1.1",
+    "webpack-node-externals": "^1.6.0"
+  }
+}
