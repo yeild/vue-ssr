@@ -1,10 +1,5 @@
 <template>
   <div id="app">
-    <router-view :data="data"></router-view>
+    <router-view></router-view>
   </div>
 </template>
-<script>
-  export default {
-    props: ['data'],
-  }
-</script>

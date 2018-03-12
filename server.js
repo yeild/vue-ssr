@@ -19,26 +19,12 @@ const renderer = createBundleRenderer(serverBundle, {
   clientManifest
 })
 
-router.get('/', async ctx => {
-  const res = await axios.get('https://news-at.zhihu.com/api/4/news/latest')
-  await renderer.renderToString({url: ctx.url, data: res.data.stories}, (err, html) => {
+router.get('*', async ctx => {
+  const context = { url: ctx.req.url }
+  await renderer.renderToString(context, (err, html) => {
     if (err) throw err
-    ctx.body = html
-  })
-})
-router.get('/news/:id', async ctx => {
-  const res = await axios.get('https://news-at.zhihu.com/api/4/news/' + ctx.params.id)
-  const d = res.data
-  await renderer.renderToString({
-    url: ctx.url,
-    data: {
-      body: d.body,
-      image: d.image,
-      title: d.title,
-      css: d.css[0]
-    }
-  }, (err, html) => {
-    if (err) throw err
+    
+    console.log(html)
     ctx.body = html
   })
 })
