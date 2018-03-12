@@ -5,7 +5,6 @@
         <a :href="'/news/'+news.id">{{news.title}}</a>
       </li>
     </ul>
-    home
   </div>
 </template>
 <script>

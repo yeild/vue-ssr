@@ -18,15 +18,18 @@ const renderer = createBundleRenderer(serverBundle, {
   template,
   clientManifest
 })
-
-router.get('*', async ctx => {
-  const context = { url: ctx.req.url }
-  await renderer.renderToString(context, (err, html) => {
-    if (err) throw err
-    
-    console.log(html)
-    ctx.body = html
+function render(context) {
+  return new Promise(function (resolve) {
+    renderer.renderToString(context, (err, html) => {
+      if (err) resolve(err)
+      resolve(html)
+    })
   })
+}
+
+router.get('*', async (ctx) => {
+  const context = { url: ctx.req.url}
+  ctx.body = await render(context)
 })
 
 server.listen(3000, function () {

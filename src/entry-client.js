@@ -1,3 +1,4 @@
+/*
 import { createApp } from './app'
 import Vue from 'vue'
 
@@ -19,4 +20,4 @@ const { app, router, store } = createApp()
 if (window.__INITIAL_STATE__) {
   store.replaceState(window.__INITIAL_STATE__)
 }
-app.$mount('#app')
+app.$mount('#app')*/
