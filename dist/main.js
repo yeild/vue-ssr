@@ -8677,9 +8677,6 @@ module.exports = defaults;
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   asyncData ({ store }) {
@@ -8688,11 +8685,6 @@ module.exports = defaults;
   computed: {
     newsList () {
       return this.$store.state.newsList
-    }
-  },
-  methods: {
-    test() {
-      console.log(123)
     }
   }
 });
@@ -12187,7 +12179,6 @@ var render = function() {
   return _c("div", [
     _c(
       "ul",
-      { attrs: { test: "111" } },
       _vm._l(_vm.newsList, function(news, index) {
         return _c("li", [
           _c("a", { attrs: { href: "/news/" + news.id } }, [
@@ -12195,12 +12186,7 @@ var render = function() {
           ])
         ])
       })
-    ),
-    _vm._v(" "),
-    _c("div", {
-      staticStyle: { width: "100px", height: "100px", background: "black" },
-      on: { click: _vm.test }
-    })
+    )
   ])
 }
 var staticRenderFns = []

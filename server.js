@@ -1,4 +1,5 @@
 const fs = require('fs')
+const path = require('path')
 const axios = require('axios')
 const Koa = require('koa')
 const Router = require('koa-router')
@@ -9,15 +10,27 @@ const router = new Router()
 server.use(assets)
 server.use(router.routes())
 
+const isProd = process.env.NODE_ENV === 'production'
 const { createBundleRenderer } = require('vue-server-renderer')
-const serverBundle = require('./dist/vue-ssr-server-bundle.json')
-const clientManifest = require('./dist/vue-ssr-client-manifest.json')
-const template = require('fs').readFileSync('./index.template.html', 'utf-8')
-const renderer = createBundleRenderer(serverBundle, {
-  runInNewContext: false,
-  template,
-  clientManifest
-})
+const templatePath = path.resolve('./index.template.html')
+let readyPromise, renderer
+
+if (isProd) {
+  const serverBundle = require('./dist/vue-ssr-server-bundle.json')
+  const clientManifest = require('./dist/vue-ssr-client-manifest.json')
+  const template = fs.readFileSync(templatePath, 'utf-8')
+  renderer = createBundleRenderer(serverBundle, {
+    runInNewContext: false,
+    template,
+    clientManifest
+  })
+} else {
+  const devServer = require('./devServer')
+  readyPromise = devServer(server, templatePath, function (bundle, options) {
+    renderer = createBundleRenderer(bundle, options)
+  })
+}
+
 function render(context) {
   return new Promise(function (resolve) {
     renderer.renderToString(context, (err, html) => {
