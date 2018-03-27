@@ -27,7 +27,7 @@ module.exports = function (server, templatePath, cb) {
     if (serverBundle && clientManifest) {
       cb(serverBundle, {
         template,
-        clientManifest
+        //clientManifest
       })
     }
   }
