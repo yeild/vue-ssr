@@ -1,11 +1,14 @@
 <template>
   <div>
     <link rel="stylesheet" :href="news.css">
-    <h1>{{news.title}}</h1>
-    <img :src="news.image">
     <div v-html="news.body"></div>
   </div>
 </template>
+<style>
+  .headline {
+    display: none;
+  }
+</style>
 <script>
   export default {
     asyncData ({ store, route }) {
