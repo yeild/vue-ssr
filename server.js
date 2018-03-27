@@ -13,7 +13,7 @@ server.use(router.routes())
 const isProd = process.env.NODE_ENV === 'production'
 const { createBundleRenderer } = require('vue-server-renderer')
 const templatePath = path.resolve('./index.template.html')
-let readyPromise, renderer
+let renderer
 
 if (isProd) {
   const serverBundle = require('./dist/vue-ssr-server-bundle.json')
@@ -26,7 +26,7 @@ if (isProd) {
   })
 } else {
   const devServer = require('./devServer')
-  readyPromise = devServer(server, templatePath, function (bundle, options) {
+  devServer(server, templatePath, (bundle, options) => {
     renderer = createBundleRenderer(bundle, options)
   })
 }
