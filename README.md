@@ -17,5 +17,5 @@ npm start
 ```
 
 ### Preview
-![](http://ooqymz3vm.bkt.clouddn.com/vue-ssr-1.png)
-![](http://ooqymz3vm.bkt.clouddn.com/vue-ssr-2.png)
+![](https://img2018.cnblogs.com/blog/1150501/201903/1150501-20190312163413135-1811319173.png)
+![](https://img2018.cnblogs.com/blog/1150501/201903/1150501-20190312163415486-303516569.png)
